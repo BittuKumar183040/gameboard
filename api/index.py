@@ -3,11 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from dotenv import load_dotenv
 from sqlalchemy import text
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
-
+CORS(app)
+CORS(app, origin=[os.getenv('FRONTEND')])
 database_user = os.getenv('DATABASE_USER')
 password = os.getenv('PASSWORD')
 host = os.getenv('HOST')
